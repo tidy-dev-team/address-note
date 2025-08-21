@@ -29,6 +29,8 @@ async function createAddressNote(targetFrame: FrameNode): Promise<FrameNode> {
     },
   ];
 
+  // textNode.textDecoration = "UNDERLINE";
+
   textNode.textAlignHorizontal = "CENTER";
   textNode.textAlignVertical = "CENTER";
 
