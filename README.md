@@ -1,40 +1,56 @@
-Below are the steps to get your plugin running. You can also find instructions at:
+# Address Note - Figma Plugin
 
-  https://www.figma.com/plugin-docs/plugin-quickstart-guide/
+A simple Figma plugin that creates navigation notes above selected frames.
 
-This plugin template uses Typescript and NPM, two standard tools in creating JavaScript applications.
+## What it does
 
-First, download Node.js which comes with NPM. This will allow you to install TypeScript and other
-libraries. You can find the download link here:
+This plugin creates orange address notes containing the Hebrew text "למסך המקורי" (meaning "to the original screen") above selected frames. Each note:
 
-  https://nodejs.org/en/download/
+- Is positioned 70px above the selected frame
+- Has the same width as the target frame
+- Features an orange background (#FF9D35) with black text
+- Contains a clickable link that navigates back to the original frame
 
-Next, install TypeScript using the command:
+## How to use
 
-  npm install -g typescript
+1. Select one or more frames in your Figma document
+2. Run the "Address note" plugin from the Plugins menu
+3. The plugin will create address notes above each selected frame
+4. Click on any note to navigate to its corresponding frame
 
-Finally, in the directory of your plugin, get the latest type definitions for the plugin API by running:
+## Development
 
-  npm install --save-dev @figma/plugin-typings
+This plugin is built with TypeScript and requires Node.js and npm.
 
-If you are familiar with JavaScript, TypeScript will look very familiar. In fact, valid JavaScript code
-is already valid Typescript code.
+### Setup
 
-TypeScript adds type annotations to variables. This allows code editors such as Visual Studio Code
-to provide information about the Figma API while you are writing code, as well as help catch bugs
-you previously didn't notice.
+1. Install Node.js from https://nodejs.org/
+2. Install TypeScript globally: `npm install -g typescript`
+3. Install plugin dependencies: `npm install`
 
-For more information, visit https://www.typescriptlang.org/
+### Building
 
-Using TypeScript requires a compiler to convert TypeScript (code.ts) into JavaScript (code.js)
-for the browser to run.
+To compile the TypeScript code to JavaScript:
 
-We recommend writing TypeScript code using Visual Studio code:
+```bash
+npm run build
+```
 
-1. Download Visual Studio Code if you haven't already: https://code.visualstudio.com/.
-2. Open this directory in Visual Studio Code.
-3. Compile TypeScript to JavaScript: Run the "Terminal > Run Build Task..." menu item,
-    then select "npm: watch". You will have to do this again every time
-    you reopen Visual Studio Code.
+Or for development with auto-compilation:
 
-That's it! Visual Studio Code will regenerate the JavaScript file every time you save.
+```bash
+npm run watch
+```
+
+### File Structure
+
+- `code.ts` - Main plugin logic
+- `code.js` - Compiled JavaScript (generated)
+- `manifest.json` - Plugin configuration
+- `package.json` - Node.js dependencies and scripts
+
+## Requirements
+
+- Figma Desktop or Web
+- Frames must be selected before running the plugin
+- Inter font family (automatically loaded by the plugin)
